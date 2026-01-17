@@ -1,22 +1,26 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Button from './button';
+import { vitest } from 'vitest';
 
 describe('Button', () => {
-  test('renders with text content', () => {
+  test('renders with text content and default classes', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button', { name: 'Click me' })).toBeInTheDocument();
+    const button = screen.getByRole('button', { name: 'Click me' });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('button', 'button--primary', 'button--m');
   });
 
-  test('applies large size class', () => {
+  test('renders with large size class', () => {
     render(<Button size="l">Large</Button>);
     const button = screen.getByRole('button', { name: 'Large' });
-    expect(button).toHaveClass('text-lg');
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('button', 'button--primary', 'button--l');
   });
 
   test('handles click events', async () => {
     const user = userEvent.setup();
-    const handleClick = jest.fn();
+    const handleClick = vitest.fn();
     render(<Button onClick={handleClick}>Click me</Button>);
 
     await user.click(screen.getByRole('button', { name: 'Click me' }));

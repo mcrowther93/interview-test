@@ -3,17 +3,18 @@ import './badge.css';
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: 'admin' | 'editor' | 'viewer' | 'guest' | 'deactivated';
-  children: React.ReactNode;
+  children: string;
 }
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ variant = 'primary', children, className = '', ...props }, ref) => {
+  ({ variant = 'viewer', children, className = '', ...props }, ref) => {
     const badgeClasses = `badge badge--${variant} ${className}`.trim();
 
     return (
       <span
         ref={ref}
         role="status"
+        aria-label={children}
         className={badgeClasses}
         {...props}
       >
