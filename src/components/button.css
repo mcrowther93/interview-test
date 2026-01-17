@@ -1,25 +1,23 @@
 .button {
   padding: 0px 30px;
-  font-weight: 500;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 1rem;
   line-height: 1;
   outline: none;
+  font-family: inherit;
 }
 
 .button--primary {
-  background-color: #FB6232;
+  background-color: var(--brand-main);
 }
 
 /* Size variants */
 .button--m {
-  font-size: 14px;
   padding: 10px 30px;
 }
 
 .button--l {
-  font-size: 16px;
-  padding: 20px 30px
+  padding: 20px 30px;
 }

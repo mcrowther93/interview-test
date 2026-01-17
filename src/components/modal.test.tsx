@@ -8,7 +8,7 @@ describe("Modal", () => {
     render(
       <Modal open={true}>
         <Modal.Body>Modal content</Modal.Body>
-      </Modal>
+      </Modal>,
     );
     expect(screen.getByRole("dialog")).toBeInTheDocument();
     expect(screen.getByText("Modal content")).toBeInTheDocument();
@@ -18,12 +18,10 @@ describe("Modal", () => {
     render(
       <Modal open={false}>
         <Modal.Body>Modal content</Modal.Body>
-      </Modal>
+      </Modal>,
     );
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
-
-
 
   test("does not call onClose when modal content is clicked", async () => {
     const user = userEvent.setup();
@@ -32,14 +30,13 @@ describe("Modal", () => {
     render(
       <Modal open={true} onClose={handleClose}>
         <Modal.Body>Modal content</Modal.Body>
-      </Modal>
+      </Modal>,
     );
 
     await user.click(screen.getByText("Modal content"));
 
     expect(handleClose).not.toHaveBeenCalled();
   });
-
 });
 
 describe("Modal.Header", () => {
@@ -47,11 +44,10 @@ describe("Modal.Header", () => {
     render(
       <Modal open={true}>
         <Modal.Header>Header content</Modal.Header>
-      </Modal>
+      </Modal>,
     );
     expect(screen.getByText("Header content")).toBeInTheDocument();
   });
-
 });
 
 describe("Modal.Body", () => {
@@ -59,7 +55,7 @@ describe("Modal.Body", () => {
     render(
       <Modal open={true}>
         <Modal.Body>Body content</Modal.Body>
-      </Modal>
+      </Modal>,
     );
     expect(screen.getByText("Body content")).toBeInTheDocument();
   });
@@ -70,26 +66,23 @@ describe("Modal.Footer", () => {
     render(
       <Modal open={true}>
         <Modal.Footer>Footer content</Modal.Footer>
-      </Modal>
+      </Modal>,
     );
     expect(screen.getByText("Footer content")).toBeInTheDocument();
   });
 });
 
-
 describe("Modal composition", () => {
   test("renders full modal with all parts", () => {
     render(
       <Modal open={true}>
-        <Modal.Header>
-          Hello World
-        </Modal.Header>
+        <Modal.Header>Hello World</Modal.Header>
         <Modal.Body>Are you sure you want to proceed?</Modal.Body>
         <Modal.Footer>
           <button type="button">Cancel</button>
           <button type="button">Confirm</button>
         </Modal.Footer>
-      </Modal>
+      </Modal>,
     );
 
     expect(screen.getByRole("dialog")).toBeInTheDocument();

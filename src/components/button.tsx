@@ -1,27 +1,25 @@
-import { ButtonHTMLAttributes, forwardRef } from 'react';
-import './button.css';
+import { type ButtonHTMLAttributes, forwardRef } from "react";
+import "./button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary';
-  size?: 'm' | 'l';
+  variant?: "primary";
+  size?: "m" | "l";
   children: React.ReactNode;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', size = 'm', children, className = '', ...props }, ) => {
-    const buttonClasses = `button button--${variant} button--${size} ${className}`.trim();
+  ({ variant = "primary", size = "m", children, className = "", ...props }) => {
+    const buttonClasses =
+      `button button--${variant} button--${size} text-${size} ${className}`.trim();
 
     return (
-      <button
-        className={buttonClasses}
-        {...props}
-      >
+      <button className={buttonClasses} {...props}>
         {children}
       </button>
     );
-  }
+  },
 );
 
-Button.displayName = 'Button';
+Button.displayName = "Button";
 
 export default Button;

@@ -1,13 +1,12 @@
 .modal {
-    left: 50%;
-    max-width: 90%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background: #ffffff;
-    box-shadow: 0 10px 20px rgba(black, 0.2);
-
+  left: 50%;
+  max-width: 90%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(black, 0.2);
 }

@@ -1,32 +1,21 @@
-import Badge from "../components/badge";
 import Button from "../components/button";
-import Modal from "../components/modal";
 
-export function UserDashboard(){
-    return <main>
-      
-        <Button size="m"> Hello </Button>
-        <Button size="l"> Hello </Button>
-        <br />
+export function UserDashboard() {
+  return (
+    <main>
+      <div className="title-m"> Title M </div>
+      <br />
 
-
-
-        <Badge variant="admin"> Admin</Badge>        <br />
-        <Badge variant="editor"> Admin</Badge>        <br />
-      <Badge variant="guest"> Admin</Badge>         <br />
-      <Badge variant="viewer"> Admin</Badge>        <br />
-      <Badge variant="deactivated"> Deactivated</Badge>   
-
-
-
-
-<Modal open={true}>
-
-<Modal.Header>Header</Modal.Header>
-<Modal.Body>Body</Modal.Body>
-<Modal.Footer><Button variant="primary">dsfdsfds</Button></Modal.Footer>
-
-</Modal>
-
+      <div className="text-s"> Text s </div>
+      <br />
+      <div className="text-s-light"> Text s light </div>
+      <br />
+      <div className="text-m"> Text m </div>
+      <br />
+      <div className="text-l"> Text l </div>
+      <br />
+      <Button size="m">Medium</Button>
+      <Button size="l">Large</Button>
     </main>
+  );
 }

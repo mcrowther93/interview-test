@@ -11,22 +11,22 @@
   color: white;
 }
 
-.badge--editor{
+.badge--editor {
   background-color: #269085;
   color: white;
 }
 
 .badge--viewer {
-  background-color: #5993B9;
+  background-color: #5993b9;
   color: white;
 }
 
 .badge--guest {
-  background-color: #9F009F;
+  background-color: #9f009f;
   color: white;
 }
 
 .badge--deactivated {
-  background-color: #FFFFFF;
-  color: #292929;  
+  background-color: #ffffff;
+  color: #292929;
 }
