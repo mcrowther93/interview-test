@@ -1,0 +1,32 @@
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.badge--admin {
+  background-color: #003569;
+  color: white;
+}
+
+.badge--editor{
+  background-color: #269085;
+  color: white;
+}
+
+.badge--viewer {
+  background-color: #5993B9;
+  color: white;
+}
+
+.badge--guest {
+  background-color: #9F009F;
+  color: white;
+}
+
+.badge--deactivated {
+  background-color: #FFFFFF;
+  color: #292929;  
+}
