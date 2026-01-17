@@ -1,0 +1,15 @@
+.inbox {
+  border: 1px solid var(--neutral-light);
+  border-radius: 0.5rem;
+  outline: none;
+  font-family: inherit;
+  background-color: white;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 170%;
+  font-weight: 400;
+}
+
+.inbox:focus {
+  border-color: var(--brand-main);
+}
