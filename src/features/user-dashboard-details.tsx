@@ -1,6 +1,6 @@
 import Badge from "../components/badge";
 import Button from "../components/button";
-import Modal from "../components/modal"
+import Modal from "../components/modal";
 import type { User } from "../data/users";
 
 import "./user-dashboard-details.css";
@@ -9,12 +9,11 @@ export interface UserDetailsProps {
   user: User;
   isOpen: boolean;
   onClose: () => void;
-
 }
 
-export function UserDetails({ user,isOpen,onClose }: UserDetailsProps) {
+export function UserDetails({ user, isOpen, onClose }: UserDetailsProps) {
   return (
-    <Modal  open={isOpen} onClose={onClose}>
+    <Modal aria-labelledby={`${user.name} details modal`} open={isOpen} onClose={onClose}>
       <Modal.Header>
         <Badge
           className="user-dashboard-details-badge "
@@ -35,16 +34,16 @@ export function UserDetails({ user,isOpen,onClose }: UserDetailsProps) {
           <a href={`mailto:${user.email}`}>{user.email}</a>
         </div>
 
-
         <div className=" user-dashboard-details-info">
           <span className="text-m">Other Details: </span>
-           <p className="text-m-medium">{user.details}</p>
+          <p className="text-m-medium">{user.details}</p>
         </div>
-
       </Modal.Body>
 
       <Modal.Footer>
-        <Button onClick={onClose} className="user-dashboard-details-cta">Close</Button>
+        <Button onClick={onClose} className="user-dashboard-details-cta">
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

@@ -23,10 +23,10 @@ export function UserDashboard() {
       <div className="user_dashboard-header">
         <h1 className="user_dashboard-title">
           <span className="user_dashboard-title-brand">User </span>
-          <span className="font-secondary">Dashboard</span>
+          <span>Dashboard</span>
         </h1>
         <form onSubmit={handleSearch}>
-          <p className="text-m-medium font-primary">WHAT ARE YOU LOOKING FOR?</p>
+          <p className="text-m-medium font-color-primary">WHAT ARE YOU LOOKING FOR?</p>
           <div className="input-container">
             <Input
               placeholder="Search by name..."
@@ -50,4 +50,3 @@ export function UserDashboard() {
     </main>
   );
 }
-

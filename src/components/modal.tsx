@@ -1,15 +1,7 @@
-import { createContext, type HTMLAttributes, type ReactNode, useContext } from "react";
+import { type HTMLAttributes, type ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import "./modal.css";
-
-interface ModalContextValue {
-  onClose?: () => void;
-}
-
-const ModalContext = createContext<ModalContextValue>({});
-
-export const useModalContext = () => useContext(ModalContext);
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   open: boolean;
@@ -18,22 +10,19 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 function ModalRoot({ open, onClose, children, className = "", ...props }: ModalProps) {
-  if (!open) return null;
+  if(!open) return null;
 
   return createPortal(
-    <ModalContext.Provider value={{ onClose }}>
-      <div className="modal-backdrop" onClick={onClose}>
-        <div
-          className={`modal ${className}`}
-          role="dialog"
-          aria-modal="true"
-          onClick={(e) => e.stopPropagation()}
-          {...props}
-        >
-          {children}
-        </div>
+    <div className="modal-backdrop" onClick={onClose}>
+      <div
+        className={`modal ${className}`}
+        role="dialog"
+        aria-modal="true"
+        {...props}
+      >
+        {children}
       </div>
-    </ModalContext.Provider>,
+    </div>,
     document.body,
   );
 }

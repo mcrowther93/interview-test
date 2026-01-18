@@ -11,6 +11,9 @@
 
 .user-dashboard-card-badge {
   margin-bottom: 8px;
+  display: flex;
+  width: max-content;
+  
 }
 
 .user-dashboard-card-cta {

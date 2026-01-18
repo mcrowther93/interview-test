@@ -1,19 +1,20 @@
 .user-dashboard-details-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .user-dashboard-details-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .user-dashboard-details-badge {
-    margin-bottom: 8px;
-  }
-  
-  .user-dashboard-details-cta {
-    float: right;
-  }
-  
+  display: flex;
+  flex-direction: column;
+}
+
+.user-dashboard-details-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-dashboard-details-badge {
+  margin-bottom: 8px;
+  display: flex;
+  width: max-content;
+}
+
+.user-dashboard-details-cta {
+  float: right;
+}
