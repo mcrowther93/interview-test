@@ -1,5 +1,6 @@
 import { use, useState } from "react";
 import Badge, { type BadgeProps } from "../components/badge";
+import type { User } from "../data/users";
 import { UserCard } from "./user-dashboard-card";
 
 type Filter = {
@@ -28,7 +29,7 @@ export function UserDashboardResults({
   }
 
   if (users.length < 1) {
-    return <h3>Unfortunatey there are 0 results, please try again</h3>;
+    return <h3>Unfortunately there are 0 results, please try again</h3>;
   }
 
   const filteredUsers = selectedFilter

@@ -1,25 +1,19 @@
-import { type HTMLAttributes, type ReactNode, useEffect, useRef } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 import "./modal.css";
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   open: boolean;
-  onClose?: () => void;
   children: ReactNode;
 }
 
-function ModalRoot({ open, onClose, children, className = "", ...props }: ModalProps) {
-  if(!open) return null;
+function ModalRoot({ open, children, className = "", ...props }: ModalProps) {
+  if (!open) return null;
 
   return createPortal(
-    <div className="modal-backdrop" onClick={onClose}>
-      <div
-        className={`modal ${className}`}
-        role="dialog"
-        aria-modal="true"
-        {...props}
-      >
+    <div className="modal-backdrop">
+      <div className={`modal ${className}`} role="dialog" aria-modal="true" {...props}>
         {children}
       </div>
     </div>,

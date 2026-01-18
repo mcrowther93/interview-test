@@ -32,6 +32,7 @@ export function UserCard({ user }: UserCardProps) {
             title={user.role.toUpperCase()}
           />
           <h3 className="title-m font-color-secondary">{user.name}</h3>
+
           <div className="text-m font-color-primary">{user.title}</div>
         </Card.Header>
 

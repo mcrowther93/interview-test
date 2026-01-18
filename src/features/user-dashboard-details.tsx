@@ -13,7 +13,7 @@ export interface UserDetailsProps {
 
 export function UserDetails({ user, isOpen, onClose }: UserDetailsProps) {
   return (
-    <Modal aria-labelledby={`${user.name} details modal`} open={isOpen} onClose={onClose}>
+    <Modal aria-label={`${user.name} details modal`} open={isOpen} onClose={onClose}>
       <Modal.Header>
         <Badge
           className="user-dashboard-details-badge "
