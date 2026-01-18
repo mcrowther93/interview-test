@@ -22,8 +22,16 @@ function ModalRoot({ open, onClose, children, className = "", ...props }: ModalP
 
   return createPortal(
     <ModalContext.Provider value={{ onClose }}>
-      <div className={`modal ${className}`} role="dialog" aria-modal="true" {...props}>
-        {children}
+      <div className="modal-backdrop" onClick={onClose}>
+        <div
+          className={`modal ${className}`}
+          role="dialog"
+          aria-modal="true"
+          onClick={(e) => e.stopPropagation()}
+          {...props}
+        >
+          {children}
+        </div>
       </div>
     </ModalContext.Provider>,
     document.body,

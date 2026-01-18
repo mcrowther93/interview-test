@@ -3,18 +3,18 @@ import "./badge.css";
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant: "admin" | "editor" | "viewer" | "guest" | "deactivated";
-  children: string;
+  title: string;
   onClick?: () => void;
 }
 
-const Badge = ({ variant = "viewer", children, onClick, className = "", ...props }: BadgeProps) => {
+const Badge = ({ variant = "viewer", title, onClick, className = "", ...props }: BadgeProps) => {
   const badgeClasses = `badge badge--${variant} ${className}`.trim();
 
   const Component = onClick ? "button" : "span";
 
   return (
-    <Component className={badgeClasses} {...props}>
-      {children}
+    <Component className={badgeClasses} onClick={onClick} {...props}>
+      {title}
     </Component>
   );
 };

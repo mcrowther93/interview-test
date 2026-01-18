@@ -1,12 +1,20 @@
-.modal {
-  left: 50%;
-  max-width: 90%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  max-width: 90%;
   padding: 10px 20px;
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 0 10px 20px rgba(black, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

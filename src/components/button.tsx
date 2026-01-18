@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, forwardRef } from "react";
+import type { ButtonHTMLAttributes } from "react";
 import "./button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,18 +7,22 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = "primary", size = "m", children, className = "", ...props }) => {
-    const buttonClasses =
-      `button button--${variant} button--${size} text-${size} ${className}`.trim();
+const Button = ({
+  variant = "primary",
+  size = "m",
+  children,
+  className = "",
+  ...props
+}: ButtonProps) => {
+  const buttonClasses =
+    `button button--${variant} button--${size} text-${size} ${className}`.trim();
 
-    return (
-      <button className={buttonClasses} {...props}>
-        {children}
-      </button>
-    );
-  },
-);
+  return (
+    <button className={buttonClasses} {...props}>
+      {children}
+    </button>
+  );
+};
 
 Button.displayName = "Button";
 

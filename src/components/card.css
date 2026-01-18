@@ -1,6 +1,9 @@
 .card {
   background: #ffffff;
   border-radius: 10px;
-  border: 1px solid var(----primary-text);
+  border: 1px solid #d3d3dc;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
