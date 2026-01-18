@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Inbox from "./inbox";
+import Inbox from "./input";
 
 describe("Inbox", () => {
   test("handles user input", async () => {

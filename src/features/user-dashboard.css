@@ -1,0 +1,29 @@
+.user_dashboard-title {
+  font-size: 60px;
+}
+
+.user_dashboard-filter {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+
+  input {
+    flex-grow: 1;
+  }
+
+  .user_dashboard-search-input {
+    padding: 16px;
+    border-radius: 20px;
+    border: none;
+  }
+}
+
+.user_dashboard-title {
+  .user_dashboard-title-brand {
+    color: var(--brand-main)
+  }
+}
