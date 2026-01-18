@@ -33,7 +33,7 @@ export function UserDashboard() {
               className="user_dashboard-search-input"
               name="search-term-name"
             />
-            <Button type="submit" className="input-button">
+            <Button size="l" type="submit" className="input-button">
               Search
             </Button>
           </div>

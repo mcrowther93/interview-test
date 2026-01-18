@@ -27,7 +27,7 @@ export function UserCard({ user }: UserCardProps) {
       <Card>
         <Card.Header>
           <Badge
-            className="user-dashboard-card-badge "
+            className="user-dashboard-card-badge"
             variant={user.role}
             title={user.role.toUpperCase()}
           />
@@ -36,12 +36,12 @@ export function UserCard({ user }: UserCardProps) {
           <div className="text-m font-color-primary">{user.title}</div>
         </Card.Header>
 
-        <Card.Body className="text-s font-color-primary user-dashboard-card-body ">
-          <div className=" user-dashboard-card-info">
+        <Card.Body className="text-s font-color-primary user-dashboard-card-body">
+          <div className="user-dashboard-card-info">
             <span className="text-s-light"> Team:</span> <span className="text-s">{user.team}</span>
           </div>
 
-          <div className=" user-dashboard-card-info">
+          <div className="user-dashboard-card-info">
             <span className="text-s-light">Contact information: </span>
             <a href={`mailto:${user.email}`}>{user.email}</a>
           </div>

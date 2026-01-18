@@ -13,10 +13,10 @@ export interface UserDetailsProps {
 
 export function UserDetails({ user, isOpen, onClose }: UserDetailsProps) {
   return (
-    <Modal aria-label={`${user.name} details modal`} open={isOpen} onClose={onClose}>
+    <Modal aria-label={`${user.name} details modal`} open={isOpen}>
       <Modal.Header>
         <Badge
-          className="user-dashboard-details-badge "
+          className="user-dashboard-details-badge"
           variant={user.role}
           title={user.role.toUpperCase()}
         />
@@ -24,17 +24,17 @@ export function UserDetails({ user, isOpen, onClose }: UserDetailsProps) {
         <div className="text-l font-color-primary">{user.title}</div>
       </Modal.Header>
 
-      <Modal.Body className="text-s font-color-primary user-dashboard-details-body ">
-        <div className=" user-dashboard-details-info">
-          <span className="text-m"> Team:</span> <span className="text-m-medium">{user.team}</span>
+      <Modal.Body className="text-s font-color-primary user-dashboard-details-body">
+        <div className="user-dashboard-details-info">
+          <span className="text-m">Team:</span> <span className="text-m-medium">{user.team}</span>
         </div>
 
-        <div className=" user-dashboard-details-info">
+        <div className="user-dashboard-details-info">
           <span className="text-m">Contact information: </span>
           <a href={`mailto:${user.email}`}>{user.email}</a>
         </div>
 
-        <div className=" user-dashboard-details-info">
+        <div className="user-dashboard-details-info">
           <span className="text-m">Other Details: </span>
           <p className="text-m-medium">{user.details}</p>
         </div>

@@ -114,4 +114,35 @@ describe("UserDashboardResults", () => {
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.queryByText("Jane Smith")).not.toBeInTheDocument();
   });
+
+  test("resets filter when promise changes", async () => {
+    const user = userEvent.setup();
+    const firstPromise = createAsyncPromise(mockUsers);
+
+    const { rerender } = await act(async () => {
+      const result = render(
+        <Suspense fallback={<div>Loading...</div>}>
+          <UserDashboardResults fetchResultsPromise={firstPromise} />
+        </Suspense>,
+      );
+      await firstPromise;
+      return result;
+    });
+
+    await user.click(screen.getByRole("button", { name: "ADMIN" }));
+    expect(screen.queryByText("Jane Smith")).not.toBeInTheDocument();
+
+    const secondPromise = createAsyncPromise(mockUsers);
+
+    await act(async () => {
+      rerender(
+        <Suspense fallback={<div>Loading...</div>}>
+          <UserDashboardResults fetchResultsPromise={secondPromise} />
+        </Suspense>,
+      );
+      await secondPromise;
+    });
+
+    expect(screen.getByText("John Doe")).toBeInTheDocument();
+  });
 });

@@ -7,7 +7,7 @@ export function mockApiRequest(term: string) {
         user.name.toLowerCase().includes(term.toLowerCase()),
       );
       resolve(filtered);
-      // reject()
+      // _reject()
     }, 500);
   });
 }

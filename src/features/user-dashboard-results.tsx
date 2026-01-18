@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Badge, { type BadgeProps } from "../components/badge";
 import type { User } from "../data/users";
 import { UserCard } from "./user-dashboard-card";
@@ -23,6 +23,10 @@ export function UserDashboardResults({
 }) {
   const users = use(fetchResultsPromise);
   const [selectedFilter, setSelectedFilter] = useState<Filter["variant"]>();
+
+  useEffect(() => {
+    setSelectedFilter(undefined);
+  }, []);
 
   function onFilterSelect(filter: Filter["variant"]) {
     setSelectedFilter(filter);
