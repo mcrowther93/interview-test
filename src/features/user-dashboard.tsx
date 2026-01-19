@@ -1,14 +1,16 @@
-import { type FormEvent, Suspense, useState } from "react";
+import { type FormEvent, Suspense, useMemo } from "react";
 import Input from "../components/input";
 
 import "./user-dashboard.css";
 import Button from "../components/button";
 import { ErrorBoundary } from "../components/error-boundary";
 import { mockApiRequest } from "./use-user-dashboard";
+import { useUserDashboardContext } from "./user-dashboard-context";
 import { UserDashboardResults } from "./user-dashboard-results";
 
 export function UserDashboard() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const { searchTerm, setSearchTerm, setSelectedFilter } = useUserDashboardContext();
+  const fetchResultsPromise = useMemo(() => mockApiRequest(searchTerm), [searchTerm]);
 
   function handleSearch(ev: FormEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -16,6 +18,7 @@ export function UserDashboard() {
     const formData = new FormData(ev.currentTarget);
     const value = formData.get("search-term-name");
     setSearchTerm(value?.toString() ?? "");
+    setSelectedFilter(undefined);
   }
 
   return (
@@ -43,7 +46,7 @@ export function UserDashboard() {
       {searchTerm && (
         <ErrorBoundary fallback={<h3>Failed to load user results.</h3>}>
           <Suspense fallback={<div>Loading</div>}>
-            <UserDashboardResults fetchResultsPromise={mockApiRequest(searchTerm)} />
+            <UserDashboardResults fetchResultsPromise={fetchResultsPromise} />
           </Suspense>
         </ErrorBoundary>
       )}

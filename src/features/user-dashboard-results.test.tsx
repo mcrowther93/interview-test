@@ -3,7 +3,12 @@ import userEvent from "@testing-library/user-event";
 import { Suspense } from "react";
 import { ErrorBoundary } from "../components/error-boundary";
 import type { User } from "../data/users";
-import { createAsyncPromise, createAsyncRejectedPromise } from "../testing-utils";
+import {
+  createAsyncPromise,
+  createAsyncRejectedPromise,
+  DashboardProviderWrapper,
+  renderWithDashboardProvider,
+} from "../testing-utils";
 import { UserDashboardResults } from "./user-dashboard-results";
 
 const mockUsers: User[] = [
@@ -32,7 +37,7 @@ describe("UserDashboardResults", () => {
     const promise = new Promise<User[]>(() => {});
 
     await act(async () => {
-      render(
+      renderWithDashboardProvider(
         <Suspense fallback={<div>Loading...</div>}>
           <UserDashboardResults fetchResultsPromise={promise} />
         </Suspense>,
@@ -46,7 +51,7 @@ describe("UserDashboardResults", () => {
     const promise = createAsyncRejectedPromise<User[]>(new Error("Failed to fetch"));
 
     await act(async () => {
-      render(
+      renderWithDashboardProvider(
         <ErrorBoundary fallback={<div>Something went wrong</div>}>
           <Suspense fallback={<div>Loading...</div>}>
             <UserDashboardResults fetchResultsPromise={promise} />
@@ -63,7 +68,7 @@ describe("UserDashboardResults", () => {
     const promise = createAsyncPromise(mockUsers);
 
     await act(async () => {
-      render(
+      renderWithDashboardProvider(
         <Suspense fallback={<div>Loading...</div>}>
           <UserDashboardResults fetchResultsPromise={promise} />
         </Suspense>,
@@ -79,7 +84,7 @@ describe("UserDashboardResults", () => {
     const promise = createAsyncPromise<User[]>([]);
 
     await act(async () => {
-      render(
+      renderWithDashboardProvider(
         <Suspense fallback={<div>Loading...</div>}>
           <UserDashboardResults fetchResultsPromise={promise} />
         </Suspense>,
@@ -97,7 +102,7 @@ describe("UserDashboardResults", () => {
     const promise = createAsyncPromise(mockUsers);
 
     await act(async () => {
-      render(
+      renderWithDashboardProvider(
         <Suspense fallback={<div>Loading...</div>}>
           <UserDashboardResults fetchResultsPromise={promise} />
         </Suspense>,
@@ -124,6 +129,11 @@ describe("UserDashboardResults", () => {
         <Suspense fallback={<div>Loading...</div>}>
           <UserDashboardResults fetchResultsPromise={firstPromise} />
         </Suspense>,
+        {
+          wrapper: ({ children }) => (
+            <DashboardProviderWrapper>{children}</DashboardProviderWrapper>
+          ),
+        },
       );
       await firstPromise;
       return result;

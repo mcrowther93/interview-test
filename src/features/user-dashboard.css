@@ -51,4 +51,14 @@
     width: 80%;
     place-self: anchor-center;
   }
+
+  .user_dashboard--results {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    article {
+      max-width: 350px;
+    }
+  }
 }

@@ -1,8 +1,8 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import type { User } from "../data/users";
-import { createAsyncPromise } from "../testing-utils";
+import { createAsyncPromise, renderWithDashboardProvider } from "../testing-utils";
 import * as useUserDashboard from "./use-user-dashboard";
 import { UserDashboard } from "./user-dashboard";
 
@@ -33,7 +33,7 @@ describe("UserDashboard", () => {
   });
 
   test("renders the dashboard header and search form", () => {
-    render(<UserDashboard />);
+    renderWithDashboardProvider(<UserDashboard />);
 
     expect(screen.getByText("User")).toBeInTheDocument();
     expect(screen.getByText("Dashboard")).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe("UserDashboard", () => {
     const promise = createAsyncPromise(mockUsers);
     vi.spyOn(useUserDashboard, "mockApiRequest").mockReturnValue(promise);
 
-    render(<UserDashboard />);
+    renderWithDashboardProvider(<UserDashboard />);
 
     const searchInput = screen.getByPlaceholderText("Search by name...");
     const searchButton = screen.getByRole("button", { name: "Search" });
@@ -68,7 +68,7 @@ describe("UserDashboard", () => {
     const promise = createAsyncPromise<User[]>([]);
     vi.spyOn(useUserDashboard, "mockApiRequest").mockReturnValue(promise);
 
-    render(<UserDashboard />);
+    renderWithDashboardProvider(<UserDashboard />);
 
     const searchInput = screen.getByPlaceholderText("Search by name...");
     const searchButton = screen.getByRole("button", { name: "Search" });

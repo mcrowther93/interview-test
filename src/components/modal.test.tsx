@@ -23,19 +23,19 @@ describe("Modal", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
-  test("does not call onClose when modal content is clicked", async () => {
+  test("does not call onClick when modal content is clicked", async () => {
     const user = userEvent.setup();
-    const handleClose = vi.fn();
+    const handleClick = vi.fn();
 
     render(
-      <Modal open={true} onClose={handleClose}>
+      <Modal open={true} onClick={handleClick}>
         <Modal.Body>Modal content</Modal.Body>
       </Modal>,
     );
 
     await user.click(screen.getByText("Modal content"));
 
-    expect(handleClose).not.toHaveBeenCalled();
+    expect(handleClick).toHaveBeenCalled();
   });
 });
 
